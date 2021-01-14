@@ -25,7 +25,10 @@ void Vehicle::setCurrentDestination(std::shared_ptr<Intersection> destination)
 void Vehicle::simulate()
 {
     // Task L1.2 : Start a thread with the member function „drive“ and the object „this“ as the launch parameters. 
-    // Also, add the created thread into the _thread vector of the parent class. 
+    // Also, add the created thread into the _thread vector of the parent class.
+    std::thread t(&Vehicle::drive, this);
+    _threads.emplace_back(t);
+
 }
 
 // virtual function which is executed in a thread
